@@ -1,0 +1,28 @@
+
+
+
+	Objectif : une classe de test avec TDD pour tester les scénario 
+	1- addition
+	2- division
+	
+	Démo Junit 4
+	
+	Projet demoTDDCalculatriceJUNIT4
+	
+	la gestion des erreurs (une division par zéro se fait avec dans notre cas expected
+	@Test(expected = ArithmeticException.class)
+	
+	Pour définir un temps donné on utilise timeout : timeout = (long) 0.002
+	
+	@Before pour initialiser les ressources à utiliser
+	@After pour libérer les ressources
+	
+	Migration avec Junit 5
+	
+	@Before change en @BeforeEach
+	@After change en @AfterEach
+	le timeout se gère autrement : 
+		timeout = (long) 0.002 n'est plus dans @Test mais rentre dans la méthode de test 
+		Assertions.assertTimeout(Duration.ofMillis(2), () -> assertEquals(2, reponse));
+	Même chose pour la gestion des erreurs
+		Assertions.assertThrows(ArithmeticException.class, () -> calculatriceService.division(10, 0));
